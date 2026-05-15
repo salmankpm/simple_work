@@ -1,13 +1,29 @@
+// Helper for localStorage
+const getLocalStorage = (key, defaultValue) => {
+  try {
+    const item = window.localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultValue;
+  } catch (error) {
+    return defaultValue;
+  }
+};
+
+const setLocalStorage = (key, value) => {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {}
+};
+
 // Mock Data to replace backend
-let mockOrders = [];
-let mockUsers = [{
+let mockOrders = getLocalStorage('mockOrders', []);
+let mockUsers = getLocalStorage('mockUsers', [{
   _id: 'u1',
   name: 'Test User',
   email: 'test@test.com',
   password: 'password', // in real life hashed
   token: 'mock-token',
   address: '123 Test St'
-}];
+}]);
 
 const mockRestaurants = [
   {
@@ -88,6 +104,7 @@ const api = {
         token: 'mock-token-' + Math.random().toString().substring(2, 8)
       };
       mockUsers.push(newUser);
+      setLocalStorage('mockUsers', mockUsers);
       return { data: { _id: newUser._id, name: newUser.name, email: newUser.email, token: newUser.token, address: newUser.address } };
     }
     if (url === '/orders') {
@@ -99,6 +116,7 @@ const api = {
         createdAt: new Date().toISOString()
       };
       mockOrders.push(newOrder);
+      setLocalStorage('mockOrders', mockOrders);
       return { data: newOrder };
     }
     throw new Error(`POST ${url} not mock configured`);
@@ -110,6 +128,7 @@ const api = {
       const orderIndex = mockOrders.findIndex(o => o._id === id);
       if (orderIndex !== -1) {
         mockOrders[orderIndex].status = body.status;
+        setLocalStorage('mockOrders', mockOrders);
         return { data: mockOrders[orderIndex] };
       }
       throw { response: { data: { message: 'Not found' } } };
