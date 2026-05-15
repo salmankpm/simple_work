@@ -101,11 +101,13 @@ const OrderTracking = () => {
                       color: isCompleted || isCurrent ? '#fff' : '#9ca3af',
                       borderColor: isCompleted || isCurrent ? '#f97316' : '#e5e7eb'
                     }}
-                    className="w-12 h-12 rounded-full border-4 flex items-center justify-center mb-2 shadow-sm"
+                    className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 md:border-4 flex items-center justify-center mb-1 md:mb-2 shadow-sm"
                   >
-                    {step.icon}
+                    <div className="scale-75 md:scale-100">
+                      {step.icon}
+                    </div>
                   </motion.div>
-                  <span className={`text-xs font-bold ${isCurrent ? 'text-orange-500' : isCompleted ? 'text-gray-800' : 'text-gray-400'}`}>
+                  <span className={`text-[10px] md:text-xs font-bold text-center w-14 md:w-auto leading-tight ${isCurrent ? 'text-orange-500' : isCompleted ? 'text-gray-800' : 'text-gray-400'}`}>
                     {step.title}
                   </span>
                 </div>

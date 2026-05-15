@@ -30,29 +30,29 @@ const Home = () => {
   return (
     <div>
       <div className="mb-12 bg-orange-100 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between overflow-hidden relative">
-        <div className="md:w-1/2 z-10">
+        <div className="md:w-1/2 z-10 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            Delicious food, <br/>delivered to your door.
+            Delicious food, <br className="hidden md:block"/>delivered to your door.
           </h1>
           <p className="text-gray-600 mb-8 text-lg">
             Discover the best local restaurants and get your favorite meals delivered fast.
           </p>
-          <div className="flex bg-white rounded-full p-2 shadow-md max-w-md">
+          <div className="flex bg-white rounded-full p-1.5 md:p-2 shadow-md max-w-md mx-auto md:mx-0">
             <input 
               type="text" 
-              placeholder="Search for restaurants or cuisines..." 
-              className="flex-1 px-4 py-2 outline-none rounded-l-full bg-transparent"
+              placeholder="Search restaurants..." 
+              className="flex-1 px-3 md:px-4 py-2 outline-none rounded-l-full bg-transparent text-sm md:text-base w-full"
             />
-            <button className="bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition-colors">
+            <button className="bg-orange-500 text-white px-4 md:px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition-colors text-sm md:text-base">
               Search
             </button>
           </div>
         </div>
-        <div className="md:w-1/2 mt-8 md:mt-0 relative">
+        <div className="md:w-1/2 mt-10 md:mt-0 relative">
           <img 
             src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" 
             alt="Food Delivery" 
-            className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl border-4 border-white mx-auto z-10 relative"
+            className="rounded-full w-56 h-56 md:w-80 md:h-80 object-cover shadow-2xl border-4 border-white mx-auto z-10 relative"
           />
         </div>
       </div>
